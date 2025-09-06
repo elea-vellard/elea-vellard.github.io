@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eléa Vellard — AI Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio d'Eléa Vellard — AI Engineer. Expériences, publications, éducation, compétences et coordonnées."
+    />
+
+    <!-- Police -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles globaux -->
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Calque Aurora animé -->
+    <div id="site-bg" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Retour à l'accueil">
+          <span class="brand__sig">EV</span>
+          <span class="brand__name">Eléa Vellard</span>
+        </a>
+        <nav class="nav">
+          <a href="#about">À propos</a>
+          <a href="#experience">Expérience</a>
+          <a href="#publications">Publications</a>
+          <a href="#education">Éducation</a>
+          <a href="#skills">Compétences</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero hero--center container reveal" id="top">
+        <div class="hero__avatar">
+          <!-- Remplace src par ta photo -->
+          <img src="assets/elea.jpg" alt="Photo d'Eléa Vellard" />
+        </div>
+
+        <h1 class="hero__name">
+          <span class="shiny-text" data-text="Eléa Vellard">Eléa Vellard</span>
+        </h1>
+
+        <p class="hero__tagline">
+          IT project manager in
+          <button class="pill pill--fx" type="button" data-target="#experience">
+            <span
+              class="star-btn"
+              style="--star-color: #9f26c1; --star-speed: 6s"
+            >
+              <span class="inner">
+                <span class="shiny-text" data-text="FX">FX</span>
+              </span>
+            </span>
+          </button>
+          with over 1 year of industry experience. Co-publisher of 2
+          <button
+            class="pill pill--ai"
+            type="button"
+            data-target="#publications"
+          >
+            <span
+              class="star-btn"
+              style="--star-color: #9f26c1; --star-speed: 6s"
+            >
+              <span class="inner">
+                <span class="shiny-text" data-text="AI papers">AI papers</span>
+              </span>
+            </span>
+          </button>
+          about playlist recommender systems selected at the RecSys 2025
+          Conference.
+        </p>
+
+        <!-- Carrousel logos -->
+        <div class="logo-carousel">
+          <div class="logo-track" id="logoTrack">
+            <a
+              class="logo"
+              href="https://github.com/elea-vellard"
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="assets/logos/github.svg" alt="GitHub" />
+            </a>
+
+            <a
+              class="logo"
+              href="https://www.linkedin.com/in/eleavellard"
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="assets/logos/linkedin.svg" alt="LinkedIn" />
+            </a>
+
+            <a class="logo" href="mailto:elea.vellard@gmail.com">
+              <img src="assets/logos/gmail.svg" alt="Gmail" />
+            </a>
+
+            <a
+              class="logo"
+              href="https://hub.docker.com/u/eleadocker"
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="assets/logos/dockerhub.svg" alt="DockerHub" />
+            </a>
+
+            <a
+              class="logo"
+              href="https://scholar.google.com/scholar?hl=fr&as_sdt=0%2C5&q=+A+Language+Model-Based+Playlist+Generation+Recommender+System&btnG="
+              target="_blank"
+              rel="noopener"
+            >
+              <img src="assets/logos/scholar.svg" alt="Google Scholar" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- À PROPOS -->
+
+      <!-- EXPÉRIENCE -->
+      <section id="experience" class="container section reveal">
+        <h2 class="section__title">Work experience</h2>
+
+        <div class="cards">
+          <!-- Carte hero -->
+          <article class="card card--hero">
+            <div class="xp">
+              <div class="xp__left">
+                <header class="card__head">
+                  <h3 class="job job--stack">
+                    <span class="job__role">IT Project Manager Intern</span>
+                    <span class="job__company">SmartTrade Technologies</span>
+                  </h3>
+                </header>
+                <span class="badge"
+                  >Jul 2025 - Present • Aix-en-Provence, France</span
+                >
+
+                <ul class="card__list">
+                  <li>
+                    Managed FX projects for major Swiss banking clients,
+                    including largest account (ZKB), overseeing delivery and
+                    client engagement for 5+ clients.
+                  </li>
+                  <li>
+                    Led deployment of an underused module, creating full
+                    documentation and a training to drive adoption. Resolved
+                    production issues through log analysis and SQL scripting,
+                    improving platform stability and client satisfaction.
+                  </li>
+                  <li>
+                    Resolved production issues through log analysis and SQL
+                    scripting, improving platform stability and client
+                    satisfaction.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="xp__right">
+                <figure class="xp__media" aria-hidden="true">
+                  <img
+                    src="assets/experience/st_rouge.jpg"
+                    alt="SmartTrade, IT Project Manager Intern"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <div class="xp__stats">
+                  <div class="stat">
+                    <p class="stat__label">Clients</p>
+                    <p class="stat__value">+5</p>
+                  </div>
+                  <div class="stat">
+                    <p class="stat__label">Months there</p>
+                    <p class="stat__value">6</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card--hero">
+            <div class="xp">
+              <div class="xp__left">
+                <header class="card__head">
+                  <h3 class="job job--stack">
+                    <span class="job__role"
+                      >Prototyping intern at OpenIT Studio</span
+                    >
+                    <span class="job__company">Siemens Healthineers</span>
+                  </h3>
+                </header>
+                <span class="badge"
+                  >Apr 2024 – Aug 2024 • Erlangen, Germany</span
+                >
+
+                <ul class="card__list">
+                  <li>
+                    Rapid prototyping for internal projects, using Microsoft
+                    Power Platforms.
+                  </li>
+                  <li>
+                    Worked in an international, English-speaking team fostering
+                    creative and critical thinking.
+                  </li>
+                  <li>
+                    Applying Design Thinking to deeply understand users' needs,
+                    and fostering digital innovation.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="xp__right">
+                <figure class="xp__media" aria-hidden="true">
+                  <img
+                    src="assets/experience/siemens.jpg"
+                    alt="Siemens Healthineers, Prototyping Intern"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <div class="xp__stats">
+                  <div class="stat">
+                    <p class="stat__label">Clients</p>
+                    <p class="stat__value">+5</p>
+                  </div>
+                  <div class="stat">
+                    <p class="stat__label">Months there</p>
+                    <p class="stat__value">6</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card--hero">
+            <div class="xp">
+              <div class="xp__left">
+                <header class="card__head">
+                  <h3 class="job job--stack">
+                    <span class="job__role"
+                      >Quality Manager position within a Junior Enterprise</span
+                    >
+                    <span class="job__company">Junior Mines Provence</span>
+                    <span class="job__tagline"
+                      >Student-run IT consulting firm</span
+                    >
+                  </h3>
+                </header>
+                <span class="badge"
+                  >Mar 2023 – Mar 2024 • Aix-en-Provence, France</span
+                >
+
+                <ul class="card__list">
+                  <li>
+                    Generated over €10k in revenue and delivered 10 contracts
+                    over the year.
+                  </li>
+                  <li>
+                    Conducted internal audits to ensure compliance with quality
+                    standards.
+                  </li>
+                  <li>
+                    Improved processes and launched a risk management project
+                    using SharePoint automation.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="xp__right">
+                <figure class="xp__media" aria-hidden="true">
+                  <img
+                    src="assets/experience/JMP.jpg"
+                    alt="JMP, Quality Manager"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <div class="xp__stats">
+                  <div class="stat">
+                    <p class="stat__label">Clients</p>
+                    <p class="stat__value">+5</p>
+                  </div>
+                  <div class="stat">
+                    <p class="stat__label">Months there</p>
+                    <p class="stat__value">6</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tes autres cartes restent comme avant ici -->
+        </div>
+      </section>
+
+      <!-- PUBLICATIONS -->
+      <!-- PUBLICATIONS -->
+      <section id="publications" class="container section reveal">
+        <h2 class="section__title">Publications</h2>
+
+        <ul class="pubs">
+          <!-- Publication 1 -->
+          <li class="pub">
+            <div class="pub__row">
+              <!-- vignette cliquable -->
+              <a
+                class="pub__thumb"
+                href="papers/paper-1.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="assets/publications/Paper1.jpg"
+                  alt="Cover of the article"
+                  loading="lazy"
+                />
+              </a>
+
+              <div class="pub__body">
+                <p class="pub__date">Apr 5, 2023</p>
+
+                <h3 class="pub__title">
+                A Language Model-Based Playlist Generation Recommender System
+                </h3>
+
+
+                <a
+                    class="pub__venue"
+                    href="https://recsys.acm.org/recsys25/"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    RecSys 2025 Conference
+                  </a>
+                <span class="pub__dot">•</span>
+                <span class="pub__authors"
+                    >Main track</span
+                  >
+
+
+                <!-- zone cachée qui s’ouvre au hover -->
+                <div class="pub__extra">
+                  <p class="pub__authors">
+                    Enzo Charolois-Pasqua, Eléa Vellard, Youssra Rebboud,
+                    Pasquale Lisena, Raphaël Troncy (EURECOM, France)
+                  </p>
+
+                  <p class="pub__abstract">
+                    The title of a playlist reflects its intended mood or theme, allowing creators to easily locate their content and enabling other users to discover music that matches specific situations and needs. This study introduces a novel approach to playlist generation using language models to leverage the thematic coherence between a playlist title and its tracks. Our method involves creating semantic clusters from text embeddings, followed by fine-tuning a transformer model on these thematic clusters. Playlists are generated by evaluating cosine similarity scores between known and unknown titles and applying a voting mechanism. Performance evaluation, combining quantitative and qualitative metrics, demonstrates that using the playlist title as a seed provides useful recommendations, even in a zero-shot scenario.
+                  </p>
+
+                  </p>
+                </div>
+              </div>
+
+              <!-- vrai bouton -->
+              <a
+                class="pub__btn"
+                href="assets/papers/main.pdf"
+                target="_blank"
+                rel="noopener"
+                >See more</a
+              >
+            </div>
+          </li>
+
+          <!-- Publication 2 -->
+          <li class="pub">
+            <div class="pub__row">
+              <!-- vignette cliquable -->
+              <a
+                class="pub__thumb"
+                href="papers/paper-1.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="assets/publications/Paper2.png"
+                  alt="Cover of the article"
+                  loading="lazy"
+                />
+              </a>
+
+              <div class="pub__body">
+                <p class="pub__date">Apr 5, 2023</p>
+
+                <h3 class="pub__title">
+                  Interactive Playlist Generation from Titles
+                </h3>
+
+                <a
+                    class="pub__venue"
+                    href="https://recsys.acm.org/recsys25/"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    RecSys 2025 Conference
+                  </a>
+                <span class="pub__dot">•</span>
+                <span class="pub__authors"
+                    >Demo track</span
+                  >
+
+
+                <!-- zone cachée qui s’ouvre au hover -->
+                <div class="pub__extra">
+                  <p class="pub__authors">
+                    Enzo Charolois-Pasqua, Eléa Vellard, Youssra Rebboud,
+                    Pasquale Lisena, Raphaël Troncy (EURECOM, France)
+                  </p>
+
+                  <p class="pub__abstract">
+                    This demo presents an interactive playlist recommendation system that relies exclusively on playlist titles. By fine-tuning a transformerbased language model on clustered playlists, we enable real-time playlist generation for a given title, relying on the semantic meaning of known playlists’ and tracks’ titles. The playlist title provided in input is freely expressed in natural language in a user-friendly web interface. The system is lightweight, fast, and fully accessible through a simple web page.                  </p>
+
+                  </p>
+                </div>
+              </div>
+
+              <!-- vrai bouton -->
+              <a
+                class="pub__btn"
+                href="assets/papers/demo.pdf"
+                target="_blank"
+                rel="noopener"
+                >See more</a
+              >
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="container section reveal">
+        <h2 class="section__title">Education</h2>
+
+        <div class="edu-cards">
+            <!-- Carte école 1 -->
+            <article class="card edu-card">
+            <div class="edu__head">
+                <div class="edu__logo">
+                <img src="assets/logos/eurecom.png" alt="Logo EURECOM">
+                </div>
+                <h3 class="edu__school">Double-degree, AI Post-Master</h3>
+                <span class="job__tagline"
+                      >EURECOM</span
+                    >
+                  </h3>
+                <span class="badge edu__badge">Sep 2024 - Jul 2025</span>
+            </div>
+
+            <ul class="edu__list">
+                <li>Graduating in 2026, all-english courses.</li>
+                <li>Advanced courses in Information Systems and Communications Security: cryptography, Big Data & Cloud, OS,  hardware security.</li>
+                <li>Additional courses in AI: Machine Learning, Reinforcement learning, Deep Learning, LLMs.</li>
+
+            </ul>
+            </article>
+
+            <!-- Carte école 2 -->
+            <article class="card edu-card">
+            <div class="edu__head">
+                <div class="edu__logo">
+                <img src="assets/logos/Sainte.png" alt="Logo Saint-Etienne">
+                </div>
+                <h3 class="edu__school">Engineering School</h3>
+                <span class="job__tagline"
+                      >Ecole des Mines de Saint-Etienne</span
+                    >
+                  </h3>
+                <span class="badge edu__badge">Sep 2022 - 2025</span>
+            </div>
+
+            <ul class="edu__list">
+                <li>Top 10 French engineering schools</li>
+                <li>3-year Master Degree in computing and microelectronics engineering.</li>
+
+            </ul>
+            </article>
+            
+        </div>
+        </section>
+
+
+        <section id="languages" class="container section reveal">
+  <h2 class="section__title">Languages</h2>
+
+  <table class="lang-table">
+    <tbody>
+      <tr>
+        <td>French</td>
+        <td>Native</td>
+      </tr>
+      <tr>
+        <td>English</td>
+        <td>Professional efficiency</td>
+      </tr>
+      <tr>
+        <td>Spanish</td>
+        <td>Intermediate</td>
+      </tr>
+      <tr>
+        <td>Chinese</td>
+        <td>Basic knowledge</td>
+      </tr>
+      <tr>
+        <td>Portuguese</td>
+        <td>Basic knowledge</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+      <!-- CONTACT -->
+    <section id="contact" class="container section reveal">
+  <h2 class="section__title">Contact</h2>
+
+  <div class="contact-buttons">
+    <!-- Bouton copier email -->
+    <button class="pill pill--mail" type="button" onclick="copyEmail()">
+      <span class="star-btn" style="--star-color:#9f26c1; --star-speed:6s">
+        <span class="inner">
+          <span class="shiny-text" data-text="Copy Email">Copy Email</span>
+        </span>
+      </span>
+    </button>
+
+    <!-- Bouton LinkedIn -->
+    <a href="https://www.linkedin.com/in/ton-profil" target="_blank" class="pill pill--linkedin">
+      <span class="star-btn" style="--star-color:#0a66c2; --star-speed:6s">
+        <span class="inner">
+          <span class="shiny-text" data-text="LinkedIn">LinkedIn</span>
+        </span>
+      </span>
+    </a>
+
+    <!-- Bouton CV -->
+    <a href="assets/CV.pdf" download class="pill pill--cv">
+      <span class="star-btn" style="--star-color:#9f26c1; --star-speed:6s">
+        <span class="inner">
+          <span class="shiny-text" data-text="Download CV">Download CV</span>
+        </span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<script>
+function copyEmail() {
+  const email = "ton.email@example.com";
+  navigator.clipboard.writeText(email).then(() => {
+    alert("Email copied: " + email);
+  });
+}
+</script>
+
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="muted">
+          © <span id="year"></span> Eléa Vellard — Tous droits réservés.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Script -->
+     
+
+    <!-- OGL (WebGL util) -->
+
+    <script src="main.js"></script>
+    <script type="module" src="aurora.js"></script>
+  </body>
+</html>
