@@ -1325,3 +1325,207 @@ main,
   border: 2px solid transparent;
   animation: shimmerFX 2.2s linear infinite;
 }
+
+/* Contact buttons responsive layout */
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  margin-top: 20px;
+}
+
+@media (max-width: 560px) {
+  .contact-buttons { gap: 12px; }
+}
+
+/* Languages table — full width on small screens */
+@media (max-width: 600px) {
+  .lang-table { width: 100%; margin: 16px auto 0; }
+  .lang-table td { padding: 16px 8px; }
+}
+
+/* Experience — allow wrapping inside the grid */
+.xp > * { min-width: 0; }
+
+/* If any long bit still pushes, force wrap */
+.card__list,
+.card__list li,
+.job,
+.badge {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Optional: ease side padding of the stats on smaller screens */
+@media (max-width: 1100px) {
+  .xp__stats { padding-left: 24px; padding-right: 24px; }
+}
+
+/* Make badges wrap cleanly on 2+ lines */
+.badge,
+.edu__badge {
+  display: inline-block;   /* one box instead of line fragments */
+  max-width: 100%;
+  white-space: normal;     /* allow wrapping */
+  line-height: 1.25;       /* tighter so the pill looks right */
+}
+
+/* If a badge gets very long, give it a little top spacing once it wraps */
+.badge { margin-top: 4px; }
+
+/* Ensure grid children don’t force overflow (keeps wrap everywhere) */
+.xp > * { min-width: 0; }
+
+/* Dots trigger */
+.menu-dots {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  z-index: 10010;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Dropdown panel */
+.mobile-menu {
+  position: fixed;
+  top: 64px;          /* same as header height */
+  right: 16px;
+  z-index: 10000;   
+  min-width: 180px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(20, 20, 24, 0.98);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+  z-index: 20;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 10px 12px;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Responsive rules: swap links for dots */
+@media (max-width: 760px) {
+  .nav { display: none; }
+  .menu-dots { display: inline-flex; }
+}
+
+/* Hide dropdown by default, show when .open */
+.mobile-menu:not(.open)[hidden] { display: none; }
+.mobile-menu.open { display: block; }
+
+/* 1) Remets le header au-dessus du contenu */
+.site-header { z-index: 1000 !important; }     /* au-dessus de main */
+main, .site-footer { z-index: 1 !important; }  /* ok que ceux-là soient à 1 */
+
+/* 2) Assure le dropdown cliquable au premier plan */
+.menu-dots { position: relative; z-index: 10010; }
+
+.mobile-menu {
+  position: fixed;     /* détaché des parents */
+  top: 64px;
+  right: 16px;
+  z-index: 10050 !important;  /* au-dessus de l’avatar */
+  pointer-events: auto;       /* accepte les clics */
+}
+
+/* si tu utilises aussi .mobile-menu-popover, même règle */
+.mobile-menu-popover {
+  position: fixed;
+  top: 64px;
+  right: 16px;
+  z-index: 10050 !important;
+  pointer-events: auto;
+}
+
+/* garde l’affichage conditionnel */
+.mobile-menu:not(.open)[hidden] { display: none; }
+.mobile-menu.open { display: block; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand__logo{
+  height: 32px;           /* ajuste 28–40px */
+  width: auto;
+  display: block;
+  border-radius: 8px;     /* garde si tu veux des coins doux */
+}
+
+@media (min-width: 768px){
+  .brand__logo{ height: 25px; }
+}
+
+/* Certifications list */
+.certs {
+  list-style: none;
+  margin: 16px auto 0;
+  padding: 0;
+  width: 100%;
+  max-width: 900px; /* proche du style Languages centré */
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.cert {
+  display: grid;
+  grid-template-columns: 56px 1fr; /* logo | texte */
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.cert__logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  padding: 6px;               /* évite que le logo colle aux bords */
+}
+
+.cert__body { min-width: 0; }
+
+.cert__title {
+  margin: 0 40px 4px;
+  font-size: 20px;            /* titre plus grand */
+  line-height: 1.3;
+}
+
+.cert__desc {
+  margin: 0 40px;
+  color: var(--muted);
+  font-size: 14px;            /* plus petit sous-titre */
+  line-height: 1.55;
+  overflow-wrap: anywhere;    /* coupe propre sur petits écrans */
+}
+
+/* Responsive: resserre un peu */
+@media (max-width: 560px) {
+  .cert { grid-template-columns: 48px 1fr; gap: 12px; }
+  .cert__logo { width: 48px; height: 48px; padding: 5px; }
+  .cert__title { font-size: 18px; }
+  .cert__desc { font-size: 13.5px; }
+}
