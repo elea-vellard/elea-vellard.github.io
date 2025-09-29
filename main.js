@@ -1,121 +1,151 @@
-// Smooth scroll (pour une sensation proche du template)
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const id = a.getAttribute('href');
-        if (id.length > 1) {
-            e.preventDefault();
-            document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id && id.length > 1) {
+      const el = document.querySelector(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
 });
 
-// Année dynamique dans le footer
-document.getElementById('year').textContent = new Date().getFullYear();
+// Dynamic year
+const y = document.getElementById('year');
+if (y) y.textContent = new Date().getFullYear();
 
-// Copier l'email
-const copyBtn = document.getElementById('copyEmailBtn');
-if (copyBtn) {
-    copyBtn.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText('elea.vellard@gmail.com');
-            copyBtn.textContent = 'Email copié ✓';
-            setTimeout(() => (copyBtn.textContent = 'Copier mon email'), 1600);
-        } catch {
-            window.location.href = 'mailto:elea.vellard@gmail.com';
-        }
+// Mobile menu toggle
+const menuBtn = document.getElementById('menuToggle');
+const nav = document.getElementById('siteNav');
+if (menuBtn && nav) {
+  menuBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Close on link click (mobile)
+  nav.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
     });
+  });
 }
 
-// Carrousel de logos — duplique le track pour un défilement infini plus fluide
-// Carrousel logos, duplication pour boucle infinie
+// Copy email button
+const copyBtn = document.getElementById('copyEmailBtn');
+if (copyBtn) {
+  copyBtn.addEventListener('click', async () => {
+    const email = copyBtn.dataset.email || 'elea.vellard@gmail.com';
+    try {
+      await navigator.clipboard.writeText(email);
+      copyBtn.textContent = 'Email copied ✓';
+      setTimeout(() => (copyBtn.textContent = 'Copy Email'), 1600);
+    } catch {
+      // Fallback to mailto
+      window.location.href = 'mailto:' + email;
+    }
+  });
+}
+
+// Logo carousel: duplicate track for seamless loop
 (function initLogos() {
-    const track = document.getElementById('logoTrack');
-    if (!track) return;
+  const track = document.getElementById('logoTrack');
+  if (!track) return;
+  if (track.dataset.ready === '1') return;
 
-    // évite de ré-initialiser
-    if (track.dataset.ready === '1') return;
+  const wrapper = track.closest('.logo-carousel') || track.parentElement;
+  const getWrapperWidth = () => Math.max(0, wrapper?.clientWidth || 0);
+  let ww = getWrapperWidth();
+  if (!ww) {
+    requestAnimationFrame(initLogos);
+    return;
+  }
 
-    const wrapper = track.closest('.logo-carousel') || track.parentElement;
+  const originals = Array.from(track.children);
+  track.style.display = 'inline-flex';
 
-    // attendre d'avoir une largeur utile
-    const getWrapperWidth = () => Math.max(0, wrapper?.clientWidth || 0);
-    let ww = getWrapperWidth();
-    if (!ww) {
-        requestAnimationFrame(initLogos); // réessaie au prochain tick
-        return;
-    }
-
-    const originals = Array.from(track.children);
-    track.style.display = 'inline-flex';
-
-    // garde-fous
-    const maxLoops = 200;      // empêche les boucles folles
-    const target = ww * 2.1;   // on veut un peu plus de 2x la largeur
-    let loops = 0;
-
-    while (track.scrollWidth < target && loops < maxLoops) {
-        originals.forEach(n => track.appendChild(n.cloneNode(true)));
-        loops++;
-    }
-
-    // double final pour continuité
+  const maxLoops = 100;
+  const target = ww * 2.1;
+  let loops = 0;
+  while (track.scrollWidth < target && loops < maxLoops) {
     originals.forEach(n => track.appendChild(n.cloneNode(true)));
+    loops++;
+  }
+  // final double for continuity
+  originals.forEach(n => track.appendChild(n.cloneNode(true)));
 
-    // durée d'anim un peu adaptative
-    const base = 26;
-    const factor = Math.min(2, Math.max(1, track.scrollWidth / (ww * 2)));
-    track.style.setProperty('--dur', `${base * factor}s`);
-
-    track.classList.add('is-ready');
-    track.dataset.ready = '1';
+  const base = 26;
+  const factor = Math.min(2, Math.max(1, track.scrollWidth / (ww * 2)));
+  track.style.setProperty('--dur', `${base * factor}s`);
+  track.style.setProperty('--half', `${track.scrollWidth / 2}px`);
+  track.classList.add('is-ready');
+  track.dataset.ready = '1';
 })();
 
-
-
-
-// Révélations au scroll
-const io = new IntersectionObserver((entries) => {
+// Reveal on scroll
+const io = new IntersectionObserver(
+  (entries) => {
     entries.forEach(e => {
-        if (e.isIntersecting) {
-            e.target.classList.add('is-visible');
-            io.unobserve(e.target);
-        }
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
     });
-}, { threshold: .12 });
+  },
+  { threshold: 0.12 }
+);
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Effet tilt subtil sur les cartes Expérience
-const tiltCards = document.querySelectorAll('.tilt');
-tiltCards.forEach(card => {
-    let raf = null;
-    const damp = 14; // sensibilité
-    function apply(e) {
-        const rect = card.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const dx = (e.clientX - cx) / rect.width;
-        const dy = (e.clientY - cy) / rect.height;
-        const rx = (dy * -damp).toFixed(2) + 'deg';
-        const ry = (dx * damp).toFixed(2) + 'deg';
-        card.style.setProperty('--rx', rx);
-        card.style.setProperty('--ry', ry);
-    }
-    card.addEventListener('mousemove', (e) => {
-        if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => apply(e));
-    });
-    card.addEventListener('mouseleave', () => {
-        card.style.setProperty('--rx', '0deg');
-        card.style.setProperty('--ry', '0deg');
-    });
-});
-
-// Scroll sur clic des pills FX / Publications
+// Pills: scroll to target sections
 document.querySelectorAll('.pill[data-target]').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-target');
-        const el = document.querySelector(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-target');
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
 
+// Dots menu toggle
+const dotsBtn = document.querySelector('.menu-dots');
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (dotsBtn && mobileMenu) {
+  const closeMenu = () => {
+    mobileMenu.classList.remove('open');
+    mobileMenu.hidden = true;
+    dotsBtn.setAttribute('aria-expanded', 'false');
+  };
+
+  dotsBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const willOpen = !mobileMenu.classList.contains('open');
+    if (willOpen) {
+      mobileMenu.hidden = false;
+      mobileMenu.classList.add('open');
+    } else {
+      closeMenu();
+    }
+    dotsBtn.setAttribute('aria-expanded', String(willOpen));
+  });
+
+  // click outside closes
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.classList.contains('open')) return;
+    if (!mobileMenu.contains(e.target) && e.target !== dotsBtn) closeMenu();
+  });
+
+  // escape closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // on resize to desktop, ensure closed
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 760) closeMenu();
+  });
+}
